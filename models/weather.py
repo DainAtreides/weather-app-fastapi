@@ -1,13 +1,7 @@
-from abc import ABC, abstractmethod
-from models.city import City
+from pydantic import BaseModel
 
 
-class Weather(ABC):
-    def __init__(self, city: City):
-        self.city = city
-        self.temp = None
-        self.description = None
-
-    @abstractmethod
-    def fetch(self):
-        pass
+class CurrentWeather(BaseModel):
+    city_name: str
+    temperature: float
+    description: str

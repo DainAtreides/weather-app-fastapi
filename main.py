@@ -1,4 +1,5 @@
-from controllers.weather_controller import show_current_weather
+from fastapi import FastAPI
+from routes.app_routes import router
 
-if __name__ == '__main__':
-    show_current_weather('Ekaterinburg')
+app = FastAPI()
+app.include_router(router)
