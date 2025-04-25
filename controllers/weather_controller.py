@@ -7,5 +7,5 @@ def show_current_weather(city_name: str) -> CurrentWeather:
     return CurrentWeather(
         city_name=city_name,
         temperature=data['main']['temp'],
-        description=data['weather'][0]['description']
+        description=data['weather'][0]['description'].title()
     )
