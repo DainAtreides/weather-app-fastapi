@@ -6,3 +6,4 @@ class CurrentWeather(BaseModel):
     city_name: str
     temperature: float
     description: str
+    icon_url: str

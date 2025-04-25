@@ -10,9 +10,10 @@
     <div class='container'>
         <h1>Weather in {{ weather.city_name }}</h1>
         <div class='weather-info'>
-            <h2>Current Weather</h2>
-            <p class='temp'>{{ weather.temperature }}°C</p>
-            <p class='description'>{{ weather.description }}</p>
+            <h2>{{ weather.city_name }}</h2>
+            <img src='{{ weather.icon_url }}' alt='Weather Icon'/>
+            <div class='temp'>{{ weather.temperature }}°C</div>
+            <div class='description'>{{ weather.description }}</div>
         </div>
     </div>
 </body>
