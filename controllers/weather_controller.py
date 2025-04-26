@@ -3,7 +3,7 @@ from models.weather import CurrentWeather, ForecastEntry, ForecastWeather
 
 
 # Function to get the current weather for a given city
-def get_current_weather(city_name: str) -> CurrentWeather:
+def get_current(city_name: str) -> CurrentWeather:
     # Get the raw weather data from the API using the helper functions
     data = get_json(build_url('weather', city_name))
     # Get the icon code from the weather data
@@ -21,7 +21,7 @@ def get_current_weather(city_name: str) -> CurrentWeather:
 
 
 # Function to get the forecast weather for a given city
-def get_forecast_weather(city_name: str) -> ForecastWeather:
+def get_forecast(city_name: str) -> ForecastWeather:
     # Get the raw forecast data from the API using the helper functions
     data = get_json(build_url('forecast', city_name))
     # Extract the forecast list from the API response
