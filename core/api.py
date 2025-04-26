@@ -1,4 +1,5 @@
 import requests
+from geopy.geocoders import Nominatim
 from config import API_KEY, BASE_URL
 
 
@@ -18,3 +19,16 @@ def get_json(url: str) -> dict:
 
     # Return the response data as a JSON dictionary
     return response.json()
+
+
+def reverse_geocode(lat: float, lon: float) -> str:
+    geolocator = Nominatim(user_agent='weather_app')
+    location = geolocator.reverse((lat, lon), language='en')
+    if location and 'city' in location.raw['address']:
+        return location.raw['address']['city']
+    elif location and 'town' in location.raw['address']:
+        return location.raw['address']['town']
+    elif location and 'village' in location.raw['address']:
+        return location.raw['address']['village']
+    else:
+        return 'Unknown'

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from views.weather_view import render_weather
-
+from core.api import reverse_geocode
 
 # Create an APIRouter instance to define API routes
 router = APIRouter()
@@ -18,5 +18,11 @@ def base_page(request: Request):
 
 
 @router.get('/weather', response_class=HTMLResponse)
-def weather_html(request: Request, city_name: str, view_type: str):
+def weather_page(request: Request, city_name: str, view_type: str):
     return render_weather(request, city_name, view_type)
+
+
+@router.get("/weather/auto", response_class=HTMLResponse)
+async def auto_weather(request: Request, lat: float, lon: float):
+    city_name = reverse_geocode(lat, lon)
+    return render_weather(request, city_name, view_type='current')

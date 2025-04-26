@@ -9,147 +9,169 @@
 </head>
 <body>
     <div class='forecast-container'>
+        <a href='/' class='back-link'>Back</a>
         <h1>5-Day Forecast for <strong>{{ forecast.city_name }}</strong></h1>
-
-        {% if forecast.forecast %}
-        <canvas id='forecastChart' width='1000' height='450'></canvas>
-
-        <script>
-            const ctx = document.getElementById('forecastChart').getContext('2d');
-        
-            const labels = [
-                {% for entry in forecast.forecast %}
-                    '{{ entry.date_time.strftime("%d %b %H:%M") }}',
-                {% endfor %}
-            ];
-        
-            const temperatures = [
-                {% for entry in forecast.forecast %}
-                    {{ entry.temperature }},
-                {% endfor %}
-            ];
-        
-            const iconUrls = [
-                {% for entry in forecast.forecast %}
-                    '{{ entry.icon_url }}',
-                {% endfor %}
-            ];
-        
-            const images = iconUrls.map(url => {
-                const img = new Image();
-                img.src = url;
-                return img;
-            });
-        
-            function getPointColor(temp) {
-                if (temp <= 0) {
-                    return '#00BFFF';
-                } else if (temp <= 15) {
-                    return '#ADD8E6';
-                } else if (temp <= 25) {
-                    return '#FF8C00';
-                } else {
-                    return '#B22222';
+            {% if forecast.forecast %}
+            <canvas id='forecastChart' width='1000' height='500'></canvas>
+            <script>
+                const ctx = document.getElementById('forecastChart').getContext('2d');
+            
+                const labels = [
+                    {% for entry in forecast.forecast %}
+                        '{{ entry.date_time.strftime("%d %b %H:%M") }}',
+                    {% endfor %}
+                ];
+            
+                const temperatures = [
+                    {% for entry in forecast.forecast %}
+                        {{ entry.temperature }},
+                    {% endfor %}
+                ];
+            
+                const iconUrls = [
+                    {% for entry in forecast.forecast %}
+                        '{{ entry.icon_url }}',
+                    {% endfor %}
+                ];
+            
+                const descriptions = [
+                    {% for entry in forecast.forecast %}
+                        '{{ entry.description }}',
+                    {% endfor %}
+                ];
+            
+                const images = iconUrls.map(url => {
+                    const img = new Image();
+                    img.src = url;
+                    return img;
+                });
+            
+                function getPointColor(temp) {
+                    if (temp <= 0) {
+                        return '#00BFFF';
+                    } else if (temp <= 15) {
+                        return '#ADD8E6';
+                    } else if (temp <= 25) {
+                        return '#FF8C00';
+                    } else {
+                        return '#B22222';
+                    }
                 }
-            }
-        
-            const forecastChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Temperature (°C)',
-                        data: temperatures,
-                        fill: false,
-                        borderColor: 'white',
-                        pointRadius: 5,
-                        pointHoverRadius: 8,
-                        pointBackgroundColor: temperatures.map(temp => getPointColor(temp)),
-                        pointBorderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    layout: {
-                        padding: {
-                            left: 20,
-                            right: 20,
-                            top: 20,
-                            bottom: 20
-                        }
+            
+                const forecastChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Temperature (°C)',
+                            data: temperatures,
+                            fill: false,
+                            borderColor: 'white',
+                            pointRadius: 6,
+                            pointHoverRadius: 9,
+                            pointBackgroundColor: temperatures.map(temp => getPointColor(temp)),
+                            pointBorderWidth: 1
+                        }]
                     },
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time',
-                                color: 'orange',
-                                font: {
-                                    size: 20
-                                }
-                            },
-                            ticks: {
-                                maxRotation: 90,
-                                minRotation: 45,
-                                color: 'white',
-                                font: {
-                                    size: 16
-                                }
-                            },
-                            grid: {
-                                color: 'orange',
-                                linewidth: 0.5
+                    options: {
+                        responsive: true,
+                        layout: {
+                            padding: {
+                                left: 20,
+                                right: 20,
+                                top: 20,
+                                bottom: 20
                             }
                         },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Temperature (°C)',
-                                color: 'orange',
-                                font: {
-                                    size: 20
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Time',
+                                    color: 'orange',
+                                    font: {
+                                        size: 20
+                                    }
+                                },
+                                ticks: {
+                                    color: 'white',
+                                    font: {
+                                        size: 16
+                                    },
+                                    callback: function(value, index, ticks) {
+                                        return index % 2 === 0 ? this.getLabelForValue(value) : '';
+                                    }
+                                },
+                                grid: {
+                                    color: 'orange',
+                                    linewidth: 0.5
                                 }
                             },
-                            ticks: {
-                                color: 'white',
-                                font: {
-                                    size: 16
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Temperature (°C)',
+                                    color: 'orange',
+                                    font: {
+                                        size: 20
+                                    }
+                                },
+                                ticks: {
+                                    color: 'white',
+                                    font: {
+                                        size: 16
+                                    }
+                                },
+                                grid: {
+                                    color: 'orange',
+                                    linewidth: 0.5
                                 }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
                             },
-                            grid: {
-                                color: 'orange',
-                                linewidth: 0.5
+                            tooltip: {
+                                enabled: true,
+                                callbacks: {
+                                    title: function(tooltipItem) {
+                                        return tooltipItem[0].label;
+                                    },
+                                    label: function(tooltipItem) {
+                                        const index = tooltipItem.dataIndex;
+                                        const temp = temperatures[index];
+                                        const description = descriptions[index];
+                                        return `Temp: ${temp}°C ${description}`;
+                                    }
+                                }
                             }
                         }
                     },
-                    plugins: {
-                        legend: {
-                            display: false
+                    plugins: [
+                        {
+                            id: 'weatherIcons',
+                            afterDatasetsDraw(chart) {
+                                const {ctx} = chart;
+                                const meta = chart.getDatasetMeta(0);
+            
+                                meta.data.forEach((point, index) => {
+                                    const x = point.x;
+                                    const y = point.y;
+                                    const image = images[index];
+            
+                                    if (image.complete) {
+                                        // Изменим координаты Y, чтобы избежать выхода за верхнюю границу
+                                        const iconY = Math.max(0, y - 50); // Не даём иконке выходить выше 0
+                                        ctx.drawImage(image, x - 25, iconY, 50, 50); // Рисуем иконку
+                                    }
+                                });
+                            }
                         }
-                    }
-                },
-                plugins: [
-                    {
-                        id: 'weatherIcons',
-                        afterDatasetsDraw(chart) {
-                            const {ctx} = chart;
-                            const meta = chart.getDatasetMeta(0);
-        
-                            meta.data.forEach((point, index) => {
-                                const x = point.x;
-                                const y = point.y;
-                                const image = images[index];
-        
-                                if (image.complete) {
-                                    ctx.drawImage(image, x - 15, y - 40, 30, 30);
-                                }
-                            });
-                        }
-                    }
-                ]
-            });
-        </script>    
-
+                    ]
+                });
+            </script>
+            
         {% else %}
             <p>No forecast data available.</p>
         {% endif %}
