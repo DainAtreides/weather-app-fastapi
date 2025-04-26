@@ -1,8 +1,8 @@
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from controllers.weather_controller import get_current_weather
-from models.weather import CurrentWeather
+from controllers.weather_controller import get_current_weather, get_forecast_weather
+from models.weather import CurrentWeather, ForecastWeather
 
 
 # Function to render the weather data for a given city
