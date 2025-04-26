@@ -8,11 +8,16 @@
 </head>
 <body>
     <div class='container'>
-        <h1>Weather App</h1>
-        <form action='/weather/current' method='get'>
-            <input type='text' name='city_name' placeholder='Enter city name' required>
-            <button type='submit'>Get Weather</button>
+        <h1>Weather <strong>App</strong></h1>
+        <form method='get' action='/weather'>
+            <input type='text' name='city_name' placeholder='Enter city' required>
+            <div class='button-group'>
+                <button type='submit' name='view_type' value='current'>Get Current</button>
+                <button type='submit' name='view_type' value='forecast'>Get Forecast</button>
+            </div>
         </form>
+    {% block content %}
+    {% endblock %}
     </div>
 </body>
 </html>
