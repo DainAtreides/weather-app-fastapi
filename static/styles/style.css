@@ -12,8 +12,9 @@ body {
 
 .container {
     margin-top: 80px;
-    min-width: 500px;
-    min-height: 500px;
+    max-width: 540px;
+    width: 90%;
+    min-height: 350px;
     background-color: #000000;
     padding: 40px;
     border-radius: 12px;
@@ -21,8 +22,10 @@ body {
 }
 
 h1 {
-    margin-bottom: 30px;
-    font-size: 36px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 32px;
     color: #ffffff;
 }
 
@@ -76,27 +79,46 @@ form button:active {
 }
 
 .weather-card {
-    margin-top: 25px;
+    margin-top: 20px;
+    font-size: 16px;
     background-color: #222;
     padding: 10px;
     border: 2px solid #222222;
     border-radius: 8px;
-    text-align: center;
     color: #FF9000;
     transition: transform 0.3s ease-in-out;
+}
+
+.weather-card ul {
+    background-color: #000000;
+    border-radius: 0 8px 8px 8px;
+    margin: 0;
+    padding: 15px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-card ul li {
+    background-color: #222222;
+    border-radius: 8px;
+    margin: 0;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: left;
 }
 
-.weather-card {
-    font-size: 20px;
+.weather-card ul .icon-block {
+    text-align: center;
+    justify-content: center;
 }
 
-.weather-card h2 {
-    font-size: 24px;
-    border: none;
-    width: 100%;
+.weather-card ul .icon-block img {
+    display: block;
+    margin: auto;
+    width: 50px;
+    height: 50px;
 }
 
 .weather-card:hover {
@@ -105,14 +127,29 @@ form button:active {
     border-radius: 8px;
 }
 
+.weather-card h2 {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    font-size: 20px;
+    border: none;
+    width: 100%;
+}
+
 .weather-card h2 strong {
-    float: left;
-    padding: 10px 15px;
+    padding: 5px 15px;
     font-weight: bold;
     border: none;
-    border-radius: 8px;
-    background-color: #000000;
-    color: #ffffff
+    border-radius: 8px 8px 0 0;
+    background-color: #FF9000;
+    color: #000000
+}
+
+.weather-card ul strong {
+    font-weight: bold;
+    color: #FFFFFF;
 }
 
 .forecast-container {
@@ -128,7 +165,7 @@ form button:active {
 
 .back-link {
     position: absolute;
-    top: 50px;
+    top: 35px;
     left: 30px;
     color: orange;
     font-size: 18px;

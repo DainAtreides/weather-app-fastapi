@@ -6,18 +6,20 @@
     {% if current %}
         <div class='weather-card'>
             <h2><strong>{{ current.city_name }}</strong></h2>
-                <div>
-                    <p>Temperature: {{ current.temperature }}°C</p>
-                    <p></p>Feels like: {{ current.feels_like }}
-                </div>
-                <div>
-                    <p></p>Humidity: {{ current.humidity }}%
-                    <p >Wind: {{ current.wind }}m/s</p>
-                </div>
-                <div>
-                    <p><img src='{{ current.icon_url }}' alt='Weather Icon'/></p>
-                    <p>{{ current.description }}</p>
-                </div>     
+                <ul>
+                    <li>
+                        <p><strong>Temperature:</strong> {{ current.temperature }}<strong>°C</strong></p>
+                        <p><strong>Feels like:</strong> {{ current.feels_like }}<strong>°C</strong></p>
+                    </li>
+                    <li>
+                        <p><strong>Humidity:</strong> {{ current.humidity }}%</p>
+                        <p><strong>Wind:</strong> {{ current.wind }}<strong>m/s</strong></p>
+                    </li>
+                    <li class='icon-block'>
+                        <img src='{{ current.icon_url }}' alt='Weather Icon'/>
+                        <p>{{ current.description }}</p>
+                    </li>
+                </ul>     
         </div>
     {% else %}
         <p>No weather data available.</p>
