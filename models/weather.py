@@ -7,6 +7,9 @@ from datetime import datetime
 class CurrentWeather(BaseModel):
     city_name: str
     temperature: float
+    feels_like: float  # Temperature feels like
+    humidity: float
+    wind: float
     description: str
     icon_url: str
 

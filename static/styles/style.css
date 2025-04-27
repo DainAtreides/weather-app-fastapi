@@ -35,26 +35,28 @@ form {
 
 input[type='text'] {
     width: 300px;
-    padding: 15px;
-    border: 1px solid #222222;
+    padding: 14px;
+    border: 2px solid #252525;
     border-radius: 8px;
-    background-color: #222222;
+    background-color: #252525;
     color: #ffffff;
     font-size: 16px;
 }
 
 input[type='text']::placeholder {
     height: 50px;
-    color: #aaaaaa;
+    color: #969696;
 }
 
-input:hover {
-    border: 1px solid #ff8c00;
+input:focus {
+    outline: none;
+    border: 2px solid #2F2F2F;
+    border-radius: 8px;
 }
 
 form button {
     height: 50px;
-    width: 85px;
+    width: 100px;
     background-color: #222222;
     color: #FFFFFF;
     border: none;
@@ -66,70 +68,51 @@ form button {
 }
 
 form button:hover {
-    background-color: #e67300;
+    background-color: #FF9000;
 }
 
 form button:active {
-    background-color: #9c5105c9;
+    background-color: #8d4804;
 }
 
 .weather-card {
     margin-top: 25px;
     background-color: #222;
     padding: 10px;
-    border: none;
-    border-radius: 10px;
+    border: 2px solid #222222;
+    border-radius: 8px;
     text-align: center;
     color: #FF9000;
     transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.weather-card ul {
-    list-style: none;
+.weather-card {
+    font-size: 20px;
 }
-
-.weather-card ul li {
-    display: inline-block;
-}
-
-
-.weather-card:hover {
-    transform: scale(1.05);
-}
-
 
 .weather-card h2 {
-    font-size: 28px;
-    margin: 10px 0;
+    font-size: 24px;
+    border: none;
+    width: 100%;
 }
 
-
-.weather-card img {
-    margin: auto;
-    width: 100px;
-    height: 100px;
-    margin: 15px 0;
+.weather-card:hover {
+    outline: none;
+    border: 2px solid #2F2F2F;
+    border-radius: 8px;
 }
 
-
-.weather-card p.temperature {
-    font-size: 69px;
+.weather-card h2 strong {
+    float: left;
+    padding: 10px 15px;
     font-weight: bold;
-    color: white;
-}
-
-
-.weather-card p.description {
-    font-size: 18px;
-    font-style: italic;
-    margin-top: 10px;
-}
-
-
-.weather-card p.date {
-    font-size: 14px;
-    margin-top: 10px;
-    color: #fff;
+    border: none;
+    border-radius: 8px;
+    background-color: #000000;
+    color: #ffffff
 }
 
 .forecast-container {
@@ -139,7 +122,7 @@ form button:active {
     padding: 30px;
     border-radius: 12px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     text-align: center;
 }
 
@@ -174,7 +157,6 @@ form button:active {
     color: #ffffff;
 }
 
-.weather-card h2 strong,
 .container h1 strong,
 .forecast-container h1 strong {
     padding: 1px;
@@ -185,8 +167,6 @@ form button:active {
 }
 
 canvas {
-    padding-top: 15px;
-    padding-right: 15px;
     background-color: #111111;
     border-radius: 10px;
 }

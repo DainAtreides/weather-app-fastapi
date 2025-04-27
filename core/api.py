@@ -13,10 +13,8 @@ def build_url(endpoint: str, city_name: str) -> str:
 def get_json(url: str) -> dict:
     # Send a GET request to the specified URL
     response = requests.get(url)
-
     # Raise an exception if the request was unsuccessful
     response.raise_for_status()
-
     # Return the response data as a JSON dictionary
     return response.json()
 

@@ -77,10 +77,10 @@
                         responsive: true,
                         layout: {
                             padding: {
-                                left: 20,
-                                right: 20,
-                                top: 20,
-                                bottom: 20
+                                left: 30,
+                                right: 30,
+                                top: 30,
+                                bottom: 30
                             }
                         },
                         scales: {
@@ -90,13 +90,13 @@
                                     text: 'Time',
                                     color: 'orange',
                                     font: {
-                                        size: 20
+                                        size: 24
                                     }
                                 },
                                 ticks: {
                                     color: 'white',
                                     font: {
-                                        size: 16
+                                        size: 18
                                     },
                                     callback: function(value, index, ticks) {
                                         return index % 2 === 0 ? this.getLabelForValue(value) : '';
@@ -113,13 +113,13 @@
                                     text: 'Temperature (°C)',
                                     color: 'orange',
                                     font: {
-                                        size: 20
+                                        size: 24
                                     }
                                 },
                                 ticks: {
                                     color: 'white',
                                     font: {
-                                        size: 16
+                                        size: 18
                                     }
                                 },
                                 grid: {
@@ -161,9 +161,8 @@
                                     const image = images[index];
             
                                     if (image.complete) {
-                                        // Изменим координаты Y, чтобы избежать выхода за верхнюю границу
-                                        const iconY = Math.max(0, y - 50); // Не даём иконке выходить выше 0
-                                        ctx.drawImage(image, x - 25, iconY, 50, 50); // Рисуем иконку
+                                        const iconY = Math.max(0, y - 50); 
+                                        ctx.drawImage(image, x - 25, iconY, 50, 50);
                                     }
                                 });
                             }

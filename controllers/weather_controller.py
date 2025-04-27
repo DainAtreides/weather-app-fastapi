@@ -8,6 +8,9 @@ def get_current(city_name: str) -> CurrentWeather:
     # Get the raw weather data from the API using the helper functions
     data = get_json(build_url('weather', city_name))
     temperature = data['main']['temp']  # Current Temperature
+    feels_like = data['main']['feels_like']  # Temperature feels like
+    humidity = data['main']['humidity']
+    wind = data['wind']['speed']
     description = data['weather'][0]['description'].title()
     # Get the icon code from the weather data
     icon_code = data['weather'][0]['icon']
@@ -15,11 +18,13 @@ def get_current(city_name: str) -> CurrentWeather:
     icon_url = f'http://openweathermap.org/img/wn/{icon_code}.png'
     # Return the weather data encapsulated in the CurrentWeather model
     return CurrentWeather(
-        city_name=city_name,  # City name
+        city_name=city_name.title(),
         temperature=temperature,
-        # Weather description
+        feels_like=feels_like,
+        humidity=humidity,
+        wind=wind,
         description=description,
-        icon_url=icon_url  # Include the weather icon URL
+        icon_url=icon_url
     )
 
 
@@ -46,7 +51,7 @@ def get_forecast(city_name: str) -> ForecastWeather:
                 icon_url=icon_url  # Icon URL for the forecast weather
             ))
         # Return the encapsulated forecast data
-        return ForecastWeather(city_name=city_name, forecast=forecast_entries)
+        return ForecastWeather(city_name=city_name.title(), forecast=forecast_entries)
     except Exception as e:
         print(f'Error: {e}')
         raise e
