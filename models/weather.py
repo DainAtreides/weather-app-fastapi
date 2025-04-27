@@ -7,7 +7,7 @@ from datetime import datetime
 class CurrentWeather(BaseModel):
     city_name: str
     temperature: int
-    feels_like: int  # Temperature feels like
+    feels_like: int
     humidity: int
     wind: int
     description: str
