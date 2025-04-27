@@ -1,22 +1,27 @@
 import requests
 from geopy.geocoders import Nominatim
 from config import API_KEY, BASE_URL
+from fastapi.exceptions import HTTPException
 
 
-# Function to build the API request URL using the provided endpoint and city name
 def build_url(endpoint: str, city_name: str) -> str:
-    # Return the formatted URL string for the API request
-    return f'{BASE_URL}/{endpoint}?q={city_name}&appid={API_KEY}&units=metric'
+    return f'{BASE_URL}/{endpoint}?q={city_name.strip()}&appid={API_KEY}&units=metric'
 
 
-# Function to send a GET request and retrieve JSON data
 def get_json(url: str) -> dict:
-    # Send a GET request to the specified URL
-    response = requests.get(url)
-    # Raise an exception if the request was unsuccessful
-    response.raise_for_status()
-    # Return the response data as a JSON dictionary
-    return response.json()
+    city_name = url.split('q=')[1].split('&')[0]
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 404:
+            raise HTTPException(
+                status_code=404, detail=f'{city_name} not found.')
+        raise HTTPException(
+            status_code=500, detail='Failed to retrieve weather data.')
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=500, detail=f'Request error: {str(e)}')
 
 
 def reverse_geocode(lat: float, lon: float) -> str:

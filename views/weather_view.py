@@ -15,11 +15,9 @@ def render_weather(request: Request, city_name: str, view_type: str) -> HTMLResp
             'request': request,
             'current': current
         })
-    elif view_type == 'forecast':
+    if view_type == 'forecast':
         forecast: ForecastWeather = get_forecast(city_name)
         return templates.TemplateResponse('forecast.html', {
             'request': request,
             'forecast': forecast
         })
-    else:
-        return HTMLResponse(content='Invalid view type', status_code=400)

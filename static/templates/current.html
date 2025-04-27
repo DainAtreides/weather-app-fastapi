@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block title %}Current Weather{% endblock %}
-
 {% block content %}
     {% if current %}
         <div class='weather-card'>
@@ -12,8 +11,8 @@
                         <p><strong>Feels like:</strong> {{ current.feels_like }}<strong>°C</strong></p>
                     </li>
                     <li>
-                        <p><strong>Humidity:</strong> {{ current.humidity }}%</p>
-                        <p><strong>Wind:</strong> {{ current.wind }}<strong>m/s</strong></p>
+                        <p><strong>Humidity:</strong> {{ current.humidity }}<strong>%</strong></p>
+                        <p><strong>Wind:</strong> {{ current.wind }}<strong> m/s</strong></p>
                     </li>
                     <li class='icon-block'>
                         <img src='{{ current.icon_url }}' alt='Weather Icon'/>

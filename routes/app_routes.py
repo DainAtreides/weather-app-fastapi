@@ -22,7 +22,7 @@ def weather_page(request: Request, city_name: str, view_type: str):
     return render_weather(request, city_name, view_type)
 
 
-@router.get("/weather/auto", response_class=HTMLResponse)
+@router.get('/weather/auto', response_class=HTMLResponse)
 async def auto_weather(request: Request, lat: float, lon: float, view_type='current'):
     city_name = reverse_geocode(lat, lon)
     return render_weather(request, city_name, view_type)

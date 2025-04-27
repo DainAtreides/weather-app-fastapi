@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Error - {{ error_code }}</title>
+    <link rel='icon' type='image/x-icon' href='/static/favicon.ico'>
+    <link rel='stylesheet' href='/static/styles/style.css'>
+</head>
+<body>
+    <div class='container'>
+        <h1>Error: <strong>{{ error_code }}</strong></h1>
+        <p style='margin-top: 80px; font-size: 24px; color: white;'>{{ error_message }}</p>
+        <a href='/' class='back-error-link'>Go back to homepage</a>
+    </div>
+</body>
+</html>

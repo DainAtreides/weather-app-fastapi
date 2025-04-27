@@ -64,7 +64,7 @@ form button {
     color: #FFFFFF;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -80,9 +80,9 @@ form button:active {
 
 .weather-card {
     margin-top: 20px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #222;
-    padding: 10px;
+    padding: 20px 5px;
     border: 2px solid #222222;
     border-radius: 8px;
     color: #FF9000;
@@ -148,7 +148,7 @@ form button:active {
 }
 
 .weather-card ul strong {
-    font-weight: bold;
+    font-weight: normal;
     color: #FFFFFF;
 }
 
@@ -162,6 +162,7 @@ form button:active {
     max-width: 1000px;
     text-align: center;
 }
+
 
 .back-link {
     position: absolute;
@@ -179,12 +180,30 @@ form button:active {
     transition: background-color 0.3s;
 }
 
-.back-link:hover {
+.back-error-link {
+    position: relative;
+    top: 50px;
+    left: center;
+    color: orange;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 5px 30px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #111111;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.back-link:hover,
+.back-error-link:hover {
     text-decoration: none;
     background-color: #e67300;
 }
 
-.back-link:active {
+.back-link:active,
+.back-error-link:active {
     background-color: #9c5105c9;
 }
 
