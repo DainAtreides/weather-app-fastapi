@@ -12,7 +12,7 @@ body {
 
 .container {
     margin-top: 80px;
-    max-width: 540px;
+    max-width: 590px;
     width: 90%;
     min-height: 350px;
     background-color: #000000;
@@ -37,7 +37,7 @@ form {
 }
 
 input[type='text'] {
-    width: 300px;
+    width: 350px;
     padding: 14px;
     border: 2px solid #252525;
     border-radius: 8px;
