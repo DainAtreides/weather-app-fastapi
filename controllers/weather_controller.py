@@ -4,9 +4,9 @@ from datetime import datetime
 
 
 # Fetch current weather data for a specific city
-def get_current(city_name: str) -> CurrentWeather:
+async def get_current(city_name: str) -> CurrentWeather:
     # Fetch the raw weather data using the build_url function
-    data = get_json(build_url('weather', city_name))
+    data = await get_json(build_url('weather', city_name))
     # Extract weather details from the response data
     temperature = int(data['main']['temp'])
     feels_like = int(data['main']['feels_like'])
@@ -29,9 +29,9 @@ def get_current(city_name: str) -> CurrentWeather:
 
 
 # Fetch weather forecast data for a specific city
-def get_forecast(city_name: str) -> ForecastWeather:
+async def get_forecast(city_name: str) -> ForecastWeather:
     # Fetch the raw forecast data using the build_url function
-    data = get_json(build_url('forecast', city_name))
+    data = await get_json(build_url('forecast', city_name))
     forecast_entries = []
 
     # Loop through forecast data to create forecast entries
