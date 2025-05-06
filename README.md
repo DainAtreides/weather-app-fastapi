@@ -1,5 +1,5 @@
 # Weather App
-This is a simple weather web application built using **FastAPI** that provides real-time weather data and weather forecasts for a given city. The application integrates with the **OpenWeather API** to fetch weather data and provides an interface for users to search for the current weather and forecast by entering the city name or using geolocation coordinates.
+This is a weather web application built using **FastAPI** that provides real-time weather data and weather forecasts for a given city. The application integrates with the **OpenWeather API** to fetch weather data and provides an interface for users to search for the current weather and forecast by entering the city name or using geolocation coordinates.
 ## Screenshots
 ### Current Weather Page
 ![Current Weather Page](assets/current_page.png)
