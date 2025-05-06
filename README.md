@@ -16,7 +16,7 @@ This is a weather web application built using **FastAPI** that provides real-tim
 ## Technologies Used
 - **FastAPI** - Web framework for building the API.
 - **Jinja2** - Templating engine for rendering HTML.
-- **httpx** — For making asynchronous HTTP requests to the OpenWeather API.
+- **httpx** - For making asynchronous HTTP requests to the OpenWeather API.
 - **Geopy** - For reverse geocoding (converting coordinates to city names).
 - **OpenWeather API** - Provides weather data.
 ## Requirements
